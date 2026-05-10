@@ -6,7 +6,7 @@
 [![Benchmark](https://img.shields.io/badge/Benchmark-Video--MME%20%7C%20OVO--Bench-blue)]()
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20111446.svg)](https://doi.org/10.5281/zenodo.20111446)
 
-> 研究由非此領域的研究者與 Claude Sonnet 4.6 共同開發測試，以獨立研究者身份完成，開發與測試在 Google Colab T4/A100 上進行。
+> 
 >
 > This research was developed and tested collaboratively by an independent researcher from outside the field and Claude Sonnet 4.6, without institutional affiliation. All development and experiments were conducted on Google Colab T4/A100.
 
