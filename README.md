@@ -53,7 +53,7 @@ LLM directly                             Stage 6+: Gemini compression
 
 ## Stage 2 Optimization: Cold-Start Probe
 
-串流場景下，系統在開始時對全片視覺節奏一無所知。S2 探針取前 100 幀（0~20s + 60~100s）估計全片特徵，並以 OLS 線性校正補償系統性偏差：
+串流場景下，系統在開始時對全片視覺節奏一無所知。S2 探針取前 100 幀（0–20s + 60–100s）估計全片特徵，並以 OLS 線性校正補償系統性偏差：
 
 In streaming scenarios, the system has no prior knowledge of the video's visual rhythm. The S2 probe samples 100 frames (0–20s + 60–100s) to estimate full-video statistics, corrected via OLS regression:
 
@@ -66,9 +66,9 @@ Validated on 108 Video-MME videos: S2 achieves μ representativeness r = 0.880, 
 
 | Strategy | Window | Viable for streaming? |
 |----------|--------|-----------------------|
-| S1 | 0~60s | ⚠️ poor on long videos |
-| **S2** | 0~20s + 60~100s | ✅ recommended |
-| S3 | 0~20s + mid±20s | ❌ requires total duration |
+| S1 | 0–60s | ⚠️ poor on long videos |
+| **S2** | 0–20s + 60–100s | ✅ recommended |
+| S3 | 0–20s + mid±20s | ❌ requires total duration |
 
 ---
 
