@@ -5,6 +5,10 @@
 [![Paper](https://img.shields.io/badge/Paper-PDF-red)](./paper/cbh_v1.pdf)
 [![Benchmark](https://img.shields.io/badge/Benchmark-Video--MME%20%7C%20OVO--Bench-blue)]()
 
+> 研究由非此領域的研究人員與 Claude Sonnet 4.6 共同開發測試，以獨立研究者身份完成，開發與測試在 Google Colab T4/A100 上進行。
+>
+> This research was developed and tested collaboratively by an independent researcher from outside the field and Claude Sonnet 4.6, without institutional affiliation. All development and experiments were conducted on Google Colab T4/A100.
+
 > **Part 1 of a 3-paper series** on sparse video understanding.
 > - Part 1 (this repo): Keyframe distillation — *CBH*
 > - Part 2: Multi-source superposition architecture — [`video-understanding-superposition`](https://github.com/cjlee/video-understanding-superposition)
@@ -49,6 +53,8 @@ LLM directly                             Stage 6+: Gemini compression
 - **Path A** skips Phi-3 entirely — comic panel images are sent directly to the LLM. Used for instant perception and short-term memory tasks.
 - **Path B** compresses panels through Phi-3 Vision → Gemini, producing a structured memory JSON before LLM reasoning. Used for long-term memory tasks (Video-MME).
 
+![System Architecture](./results/figures/fig_architecture.png)
+
 ---
 
 ## Stage 2 Optimization: Cold-Start Probe
@@ -69,6 +75,8 @@ Validated on 108 Video-MME videos: S2 achieves μ representativeness r = 0.880, 
 | S1 | 0–60s | ⚠️ poor on long videos |
 | **S2** | 0–20s + 60–100s | ✅ recommended |
 | S3 | 0–20s + mid±20s | ❌ requires total duration |
+
+![Cold-start probe representativeness (S1/S2/S3)](./results/figures/fig_probe_s123.png)
 
 ---
 
@@ -190,6 +198,10 @@ Three LLM configurations are deliberately designed with different levels of info
 | **V4** | **25.0%** | **56.0%** | **63.9%** | **978** |
 
 V4 achieves the highest overall accuracy under strict conditions (T=0) with the fewest tokens (978 vs 1545 for V3). Notably, V3 (transcript-only) outperforms visual methods on long videos under T=0 — pure transcripts carry higher information density for extended content. V4 dominates on short videos across all LLM settings.
+
+![Accuracy heatmap by sub-category × method × LLM](./results/figures/fig_heatmap.png)
+
+![Accuracy vs Input Token Count](./results/figures/fig_token_accuracy.png)
 
 ### Instant Perception — OVO-Bench Gaming (43 questions)
 
@@ -334,11 +346,3 @@ video-understanding-CBH/
   url     = {https://github.com/cjlee/video-understanding-CBH}
 }
 ```
-
----
-
-## 研究背景 / Research Context
-
-本研究由非本領域的研究者與 Claude 共同開發測試，以獨立研究者身份完成，無機構隸屬，全程在 Google Colab T4/A100 上進行實驗。
-
-This research was developed and tested collaboratively by an independent researcher from outside the field and Claude, without institutional affiliation. All experiments were run on Google Colab T4/A100.
